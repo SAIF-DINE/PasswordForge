@@ -166,8 +166,7 @@ async function generateAesKey() {
         ab2b64,
         b642ab,
         generateAesKey,
-        exportRawKey,
-        importRawKey,
+
         encryptWithKey,
         decryptWithKey
       };
@@ -226,7 +225,8 @@ async function generateAesKey() {
       }
   
       // Application-level keys:
-      const APP_KEY = 'pf_app_key_raw'; // stored in IndexedDB as base64 raw bytes
+      const key = await storageManager.idbGet('app_crypto_key');
+
       const ENCRYPTED_SALT = 'pf_enc_salt_v1'; // encrypted salt in localStorage (base64)
       const ENC_HASHES = 'pf_hashes_v1'; // encrypted JSON array of hashes stored in localStorage
   
